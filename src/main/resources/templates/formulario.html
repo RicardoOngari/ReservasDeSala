@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Sala</title>
+</head>
+<body>
+<h1>Cadastro de Sala</h1>
+
+<!-- th:action="@{/salas}" Diz onde o formulario sera enviado.
+th:object="${sala}" Este formulário trabalha com o objeto sala. -->
+<form th:action="@{/salas}" th:object="${sala}" method="post">
+
+    <label>Nome da sala:</label>
+
+    <input type="text" th:field="*{nome}">
+    <!-- Se o campo nome tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('nome')}"
+          th:errors="*{nome}">
+    </span>
+    <br>
+
+    <label>Localização da sala:</label>
+
+    <input type="text" th:field="*{localizacao}">
+    <!-- Se o campo localização tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('localizacao')}"
+          th:errors="*{localizacao}">
+    </span>
+    <br>
+
+    <label>Responsavel da sala:</label>
+
+    <input type="text" th:field="*{responsavel}">
+
+    <!-- Se o campo localização tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('responsavel')}"
+          th:errors="*{responsavel}">
+    </span>
+    <br>
+
+    <label>Email do Responsavel:</label>
+
+    <input type="email" th:field="*{emailResponsavel}">
+
+    <!-- Se o campo localização tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('emailResponsavel')}"
+          th:errors="*{emailResponsavel}">
+    </span>
+    <br>
+
+    <label>Tipo da sala:</label>
+
+    <select th:field="*{tipo}">
+        <option value="">Selecione o tipo</option>
+
+        <option th:each="tipo : ${tipos}"
+                th:value="${tipo}"
+                th:text="${tipo}">
+        </option>
+    </select>
+    <span th:if="${#fields.hasErrors('tipo')}"
+          th:errors="*{tipo}">
+    </span>
+    <br>
+
+    <label>Capacidade da sala:</label>
+
+    <input type="number" th:field="*{capacidade}">
+    <!-- Se o campo localização tiver algum erro, mostre isso. -->
+    <span th:if="${#fields.hasErrors('capacidade')}"
+          th:errors="*{capacidade}">
+    </span>
+    <br>
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+</body>
+</html>

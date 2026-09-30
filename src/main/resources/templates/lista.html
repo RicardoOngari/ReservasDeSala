@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Salas</title>
+</head>
+<style>
+    table, th, td{border: solid 2px; margin-top: 5px}
+</style>
+<body>
+<h1>Lista de Salas</h1>
+
+<a href="/salas/nova">Cadastrar nova sala</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Localização</th>
+        <th>Responsável</th>
+        <th>Tipo</th>
+        <th>Capacidade</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+        <tr th:each="sala : ${salas}">
+
+            <td th:text="${sala.nome}"></td>
+
+            <td th:text="${sala.localizacao}"></td>
+
+            <td th:text="${sala.responsavel}"></td>
+
+            <td th:text="${sala.tipo}"></td>
+
+            <td th:text="${sala.capacidade}"></td>
+
+            <td th:text="${sala.status}"></td>
+
+            <td>
+                <a th:href="@{/salas/{id}(id=${sala.id})}">
+                    Detalhes
+                </a>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Sala</title>
+</head>
+<body>
+
+<h1>Detalhes da Sala</h1>
+
+<p>
+    <strong>Nome:</strong>
+    <span th:text="${sala.nome}"></span>
+</p>
+
+<p>
+    <strong>Localização:</strong>
+    <span th:text="${sala.localizacao}"></span>
+</p>
+
+<p>
+    <strong>Responsável:</strong>
+    <span th:text="${sala.responsavel}"></span>
+</p>
+
+<p>
+    <strong>Email do responsável:</strong>
+    <span th:text="${sala.emailResponsavel}"></span>
+</p>
+
+<p>
+    <strong>Tipo:</strong>
+    <span th:text="${sala.tipo}"></span>
+</p>
+
+<p>
+    <strong>Capacidade:</strong>
+    <span th:text="${sala.capacidade}"></span>
+</p>
+
+<p>
+    <strong>Status:</strong>
+    <span th:text="${sala.status}"></span>
+</p>
+
+<form th:action="@{/salas/{id}/reservar(id=${sala.id})}" method="post">
+    <button type="submit">Reservar</button>
+</form>
+<br>
+<form th:action="@{/salas/{id}/iniciar(id=${sala.id})}" method="post">
+    <button type="submit">Iniciar uso</button>
+</form>
+<br>
+<form th:action="@{/salas/{id}/liberar(id=${sala.id})}" method="post">
+    <button type="submit">Liberar</button>
+</form>
+<br>
+<form th:action="@{/salas/{id}/bloquear(id=${sala.id})}" method="post">
+    <button type="submit">Bloquear</button>
+</form>
+<br>
+<form th:action="@{/salas/{id}/desbloquear(id=${sala.id})}" method="post">
+    <button type="submit">Desbloquear</button>
+</form>
+<br>
+
+<a href="/salas">Voltar para lista</a>
+
+</body>
+</html>
